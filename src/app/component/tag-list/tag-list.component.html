@@ -1,5 +1,0 @@
-<div class="tag-container">
-  <div class="tag-item" *ngFor="let tag of tagList; let i = index" (click)="onTagClick(tag)">
-      <button type="button" class="btn btn-primary" (click)="select(i)" [ngClass]="{'active': selectedIndex == i}">{{ tag.name }}</button>
-  </div>
-</div>
