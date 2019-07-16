@@ -1,0 +1,52 @@
+<div>
+  <div class="list-group">
+    <li *ngFor="let todo of todoList" class="list-group-item list-group-item-action">
+      {{ todo.title }}
+      <div class="list-action">
+        <button type="button" class="btn btn-warning list-button" data-toggle="modal" data-target="#myModal"
+          (click)="modalFlag(false, todo)"><i class="far fa-edit" aria-hidden="true"></i> Edit</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteTodo(todo)"><i class="fa fa-trash"
+            aria-hidden="true"></i> Delete</button>
+      </div>
+    </li>
+  </div>
+
+  <a class="float" data-toggle="modal" data-target="#myModal" (click)="modalFlag(true, '')"><i
+      class="fa fa-plus my-float"></i></a>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Todo Editor</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <!-- Add Todo Section Start Here -->
+          <div *ngIf="addModal">
+            <div class="add-todo-container">
+              <div class="form-group">
+                <textarea class="form-control" id="formControlTextarea1" rows="3" [(ngModel)]="newtodoTitle"></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- Edit Todo Section Start Here -->
+          <div *ngIf="!addModal">
+            <div class="add-todo-container">
+              <div class="form-group">
+                <textarea class="form-control" id="formControlTextarea1" rows="3" [(ngModel)]="currentTodo.title"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button *ngIf="addModal" type="button" class="btn btn-success" data-dismiss="modal"
+            (click)="onAddTodo()">Add</button>
+          <button *ngIf="!addModal" type="button" class="btn btn-success" data-dismiss="modal"
+            (click)="onEditTodo(currentTodo)">Edit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.tag-container {
+  display: flex;
+  margin: 10px;
+  .tag-item {
+    display: inline-block;
+    button {
+      margin-right: 10px;
+    }
+  }
+}
+
+.active{
+  color: #0069d9;
+}
